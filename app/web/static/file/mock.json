@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "user": "user",
+      "pwd": "user"
+    },
+    {
+      "user": "admin",
+      "pwd": "admin"
+    }
+  ],
+  "user_setting": [
+    {
+      "user": "user",
+      "Color": "rgb(245, 34, 45)",
+      "Theme": "light",
+      "Layout": "head"
+    },
+    {
+      "user": "admin",
+      "Color": "rgb(250, 173, 20)",
+      "Theme": "dark",
+      "Layout": "side"
+    }
+  ]
+}
