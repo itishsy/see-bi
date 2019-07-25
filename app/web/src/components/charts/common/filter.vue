@@ -111,7 +111,7 @@
 </template>
 
 <script>
-import checkbox from '../checkbox/checkbox'
+import checkbox from './checkbox'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 moment.locale('zh-cn')
@@ -148,17 +148,17 @@ export default {
       this._initProList()
     },
     _initProList () {
-      let arr = []
-      if (this.prevClass !== 'point') {
-        this.showProduct = true
-        this.option.xAxis[0].data.forEach((pro, index) => {
-          arr.push({
-            name: pro,
-            selected: true
-          })
-        })
-        this.pro_list = arr
-      }
+      // let arr = []
+      // if (this.prevClass !== 'point') {
+      // this.showProduct = true
+      //   this.option.xAxis[0].data.forEach((pro, index) => {
+      //     arr.push({
+      //       name: pro,
+      //       selected: true
+      //     })
+      //   })
+      //   this.pro_list = arr
+      // }
     },
     _deepCopy (obj) {
       let str, newobj

@@ -2,7 +2,7 @@
   <div class="dashboard">
     <div class="flex-container column">
         <div class="item one" @click="clickChart('1')" style="transform: translate(-22.4%,-33.5%) scale(0.33)">
-          <multipleColumn></multipleColumn>
+          <pie></pie>
         </div>
         <div class="item two" @click="clickChart('2')" style="transform: translate(-22.4%,0.5%) scale(0.33)">
           <column></column>
@@ -20,7 +20,7 @@
 <script>
 import column from '../charts/column'
 import line from '../charts/line'
-import multipleColumn from '../charts/multiColumn'
+import pie from '../charts/pie'
 import point from '../charts/point'
 
 export default {
@@ -64,7 +64,7 @@ export default {
   },
   components: {
     column,
-    multipleColumn,
+    pie,
     point,
     'v-line': line
   }
@@ -75,7 +75,7 @@ export default {
 <style lang="stylus" scoped>
 *
   box-sizing: border-box;
-.point,.multipleColumn,.columnChart,.line
+.point,.pie,.columnChart,.line
   height 100%!important
   width 100%!important
   background none!important
@@ -92,7 +92,7 @@ export default {
 .dashboard
     position relative
     width 100%
-    height 100%
+    height 700px
     margin:0px;
     padding:0px;
     padding-top 5%

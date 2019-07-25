@@ -22,14 +22,13 @@
 
 <script>
 import echarts from 'echarts'
-import header from '../common/charts/header'
-import filter from '../common/charts/filter'
+import header from './common/header'
+import filter from './common/filter'
 
 export default {
   data () {
     return {
       legendArr: [],
-      color: this.$store.state.color,
       myChart: {},
       name: '柱状图'
     }
@@ -54,103 +53,41 @@ export default {
     // 基于准备好的dom，初始化echarts实例
     this.myChart = echarts.init(document.querySelector('.columnChart .main'))
     this.myChart.setOption({
-      title: {
-        show: false
-      },
+      color: ['#3398DB'],
       tooltip: {
-        trigger: 'axis'
-      },
-      legend: {
-        show: false
-      },
-      toolbox: {
-        show: false
-      },
-      color: this.color,
-      calculable: true,
-      xAxis: [{
-        name: '产品',
-        type: 'category',
-        axisLine: {
-          show: false
-        },
-        axisTick: {
-          show: false
-        },
-        nameTextStyle: {
-          color: 'rgba(255, 255, 255, 0.69)'
-        },
-        axisLabel: {
-          textStyle: {
-            color: 'white'
-          }
-        },
-        data: ['产品1', '产品2']
-      }],
-      yAxis: [{
-        axisLine: {
-          show: false
-        },
-        nameLocation: 'end',
-        nameGap: 20,
-        nameRotate: 0,
-        axisTick: {
-          show: false
-        },
-        splitLine: {
-          lineStyle: {
-            color: ['rgba(230, 230, 230, 0.2)']
-          }
-        },
-        axisLabel: {
-          textStyle: {
-            color: 'white',
-            fontSize: 14
-          }
-        },
-        name: '数量',
-        type: 'value',
-        nameTextStyle: {
-          color: 'rgba(255, 255, 255, 0.69)'
+        trigger: 'axis',
+        axisPointer: { // 坐标轴指示器，坐标轴触发有效
+          type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
         }
-      }],
-      series: [{
-        name: '标签1',
-        type: 'bar',
-        data: [2.0, 4.9],
-        barWidth: 16,
-        barGap: 0
-      }, {
-        name: '标签2',
-        type: 'bar',
-        data: [2.6, 5.9],
-        barWidth: 16,
-        barGap: 0
-      }, {
-        name: '标签3',
-        type: 'bar',
-        data: [2.0, 6.4],
-        barWidth: 16,
-        barGap: 0
-      }, {
-        name: '标签4',
-        type: 'bar',
-        data: [4.0, 5.9],
-        barWidth: 16,
-        barGap: 0
-      }, {
-        name: '标签5',
-        type: 'bar',
-        data: [5.6, 4.9],
-        barWidth: 16,
-        barGap: 0
-      }, {
-        name: '标签6',
-        type: 'bar',
-        data: [2.0, 3.4],
-        barWidth: 16,
-        barGap: 0
-      }]
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: [
+        {
+          type: 'category',
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          axisTick: {
+            alignWithLabel: true
+          }
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value'
+        }
+      ],
+      series: [
+        {
+          name: '直接访问',
+          type: 'bar',
+          barWidth: '60%',
+          data: [10, 52, 200, 334, 390, 330, 220]
+        }
+      ]
     })
     this.init()
   }

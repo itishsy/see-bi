@@ -19,24 +19,17 @@
 
 <script>
 import echarts from 'echarts'
-// import china from 'echarts/map/js/china'
-import header from '../common/charts/header'
-import filter from '../common/charts/filter'
-
-// const USER_NAME = 'elastic'
-// const PSW = 'elasticl@ethical.cn'
-// const AUTH_TOKEN = "Basic " + btoa(USER_NAME + ":" + PSW)
+import header from './common/header'
+import filter from './common/filter'
 
 export default {
   created () {
-    this._getCityData()
+    this._getMyChart()
   },
   data () {
     return {
       legendArr: [],
-      color: this.$store.state.color,
       myChart: {},
-      geoCoordMap: {},
       name: '散点图'
     }
   },
@@ -53,147 +46,182 @@ export default {
         this.myChart.resize()
       }.bind(this))
     },
-    _getCityData () {
-      this.$get('city').then((res) => {
-        this.geoCoordMap = res.data
-        this.$nextTick(() => {
-          this._getMyChart()
-        })
-      })
-    },
-    convertData (data) {
-      let res = []
-      for (let i = 0; i < 4; i++) {
-        let l = data.length
-        let x = parseInt(Math.random() * l)
-        let geoCoord = this.geoCoordMap[data[x].name]
-        // let geoCoord = this.geoCoordMap[data[i].name];
-        if (geoCoord) {
-          res.push({
-            name: data[x].name,
-            // name: data[x].name,
-            value: geoCoord.concat(Math.random() * 200)
-            // value: geoCoord.concat(data[i].value)
-          })
-        }
-      }
-      return res
-    },
     _getMyChart () {
-      this.$get('point').then((res) => {
+      this.$get('point.data').then((res) => {
+        let schema = [
+          {name: 'date', index: 0, text: '日'},
+          {name: 'AQIindex', index: 1, text: 'AQI指数'},
+          {name: 'PM25', index: 2, text: 'PM2.5'},
+          {name: 'PM10', index: 3, text: 'PM10'},
+          {name: 'CO', index: 4, text: '一氧化碳（CO）'},
+          {name: 'NO2', index: 5, text: '二氧化氮（NO2）'},
+          {name: 'SO2', index: 6, text: '二氧化硫（SO2）'}
+        ]
+        let itemStyle = {
+          normal: {
+            opacity: 0.8,
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowOffsetY: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
+        }
         let options = {
-          // backgroundColor: '#404a59',
-          title: {
-            show: false
+          backgroundColor: '#404a59',
+          color: [
+            '#dd4444', '#fec42c', '#80F1BE'
+          ],
+          legend: {
+            y: 'top',
+            data: ['北京', '上海', '广州'],
+            textStyle: {
+              color: '#fff',
+              fontSize: 16
+            }
+          },
+          grid: {
+            x: '10%',
+            x2: 150,
+            y: '18%',
+            y2: '10%'
           },
           tooltip: {
-            trigger: 'item',
-            formatter: function (params) {
-              return params.name + ' : ' + params.value[2]
+            padding: 10,
+            backgroundColor: '#222',
+            borderColor: '#777',
+            borderWidth: 1,
+            formatter: function (obj) {
+              var value = obj.value
+              return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">' +
+                obj.seriesName + ' ' + value[0] + '日：' +
+                value[7] +
+                '</div>' +
+                schema[1].text + '：' + value[1] + '<br>' +
+                schema[2].text + '：' + value[2] + '<br>' +
+                schema[3].text + '：' + value[3] + '<br>' +
+                schema[4].text + '：' + value[4] + '<br>' +
+                schema[5].text + '：' + value[5] + '<br>' +
+                schema[6].text + '：' + value[6] + '<br>'
             }
           },
-          legend: {
-            show: false
-          },
-          visualMap: {
-            min: 0,
-            max: 200,
-            bottom: 50,
-            splitNumber: 5,
-            inRange: {
-              color: ['#255B78', '#2A7484', '#2F9696', '#3BBCB0', '#51D4EB']
+          xAxis: {
+            type: 'value',
+            name: '日期',
+            nameGap: 16,
+            nameTextStyle: {
+              color: '#fff',
+              fontSize: 14
             },
-            textStyle: {
-              color: '#fff'
-            }
-          },
-          geo: {
-            map: 'china',
-            label: {
-              emphasis: {
-                show: false
-              }
+            max: 31,
+            splitLine: {
+              show: false
             },
-            zoom: 1,
-            top: 50,
-            itemStyle: {
-              normal: {
-                color: '#3c4247',
-                opacity: 0.6,
-                borderColor: 'rgba(255, 255, 255, 0.35)'
-              },
-              emphasis: {
-                color: '#2a333d'
+            axisLine: {
+              lineStyle: {
+                color: '#eee'
               }
             }
           },
-          series: [{
-            name: '标签1',
-            type: 'scatter',
-            coordinateSystem: 'geo',
-            symbolSize: function (val) {
-              return val[2] / 6
+          yAxis: {
+            type: 'value',
+            name: 'AQI指数',
+            nameLocation: 'end',
+            nameGap: 20,
+            nameTextStyle: {
+              color: '#fff',
+              fontSize: 16
             },
-            label: {
-              normal: {
-                show: false
+            axisLine: {
+              lineStyle: {
+                color: '#eee'
+              }
+            },
+            splitLine: {
+              show: false
+            }
+          },
+          visualMap: [
+            {
+              left: 'right',
+              top: '10%',
+              dimension: 2,
+              min: 0,
+              max: 250,
+              itemWidth: 30,
+              itemHeight: 120,
+              calculable: true,
+              precision: 0.1,
+              text: ['圆形大小：PM2.5'],
+              textGap: 30,
+              textStyle: {
+                color: '#fff'
               },
-              emphasis: {
-                show: false
-              }
-            },
-            itemStyle: {
-              emphasis: {
-                borderColor: '#fff',
-                borderWidth: 1
-              }
-            },
-            data: this.convertData(res.data)
-          }, {
-            name: '标签2',
-            type: 'scatter',
-            coordinateSystem: 'geo',
-            symbolSize: function (val) {
-              return val[2] / 6
-            },
-            label: {
-              normal: {
-                show: false
+              inRange: {
+                symbolSize: [10, 70]
               },
-              emphasis: {
-                show: false
-              }
-            },
-            itemStyle: {
-              emphasis: {
-                borderColor: '#fff',
-                borderWidth: 1
-              }
-            },
-            data: this.convertData(res.data)
-          }, {
-            name: '标签3',
-            type: 'scatter',
-            coordinateSystem: 'geo',
-            symbolSize: function (val) {
-              return val[2] / 6
-            },
-            label: {
-              normal: {
-                show: false
+              outOfRange: {
+                symbolSize: [10, 70],
+                color: ['rgba(255,255,255,.2)']
               },
-              emphasis: {
-                show: false
+              controller: {
+                inRange: {
+                  color: ['#c23531']
+                },
+                outOfRange: {
+                  color: ['#444']
+                }
               }
             },
-            itemStyle: {
-              emphasis: {
-                borderColor: '#fff',
-                borderWidth: 1
+            {
+              left: 'right',
+              bottom: '5%',
+              dimension: 6,
+              min: 0,
+              max: 50,
+              itemHeight: 120,
+              calculable: true,
+              precision: 0.1,
+              text: ['明暗：二氧化硫'],
+              textGap: 30,
+              textStyle: {
+                color: '#fff'
+              },
+              inRange: {
+                colorLightness: [1, 0.5]
+              },
+              outOfRange: {
+                color: ['rgba(255,255,255,.2)']
+              },
+              controller: {
+                inRange: {
+                  color: ['#c23531']
+                },
+                outOfRange: {
+                  color: ['#444']
+                }
               }
+            }
+          ],
+          series: [
+            {
+              name: '北京',
+              type: 'scatter',
+              itemStyle: itemStyle,
+              data: res.data.BJ
             },
-            data: this.convertData(res.data)
-          }]
+            {
+              name: '上海',
+              type: 'scatter',
+              itemStyle: itemStyle,
+              data: res.data.SH
+            },
+            {
+              name: '广州',
+              type: 'scatter',
+              itemStyle: itemStyle,
+              data: res.data.GZ
+            }
+          ]
         }
         this.init(options)
       })
