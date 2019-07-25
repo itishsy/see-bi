@@ -51,20 +51,23 @@ export default {
   mounted () {
     // 基于准备好的dom，初始化echarts实例
     this.myChart = echarts.init(document.querySelector('.line .main'))
-    this.myChart.setOption({
-      xAxis: {
-        type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-      },
-      yAxis: {
-        type: 'value'
-      },
-      series: [{
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
-        type: 'line'
-      }]
+    this.$get('charts.data.week').then((res) => {
+      let data = res.data
+      this.myChart.setOption({
+        xAxis: {
+          type: 'category',
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [{
+          data: [data.Mon, data.Tue, data.Wed, data.Thu, data.Fri, data.Sat, data.Sun],
+          type: 'line'
+        }]
+      })
+      this.init()
     })
-    this.init()
   }
 }
 

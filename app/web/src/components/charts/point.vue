@@ -24,7 +24,7 @@ import filter from './common/filter'
 
 export default {
   created () {
-    this._getMyChart()
+    this.getChart()
   },
   data () {
     return {
@@ -46,8 +46,8 @@ export default {
         this.myChart.resize()
       }.bind(this))
     },
-    _getMyChart () {
-      this.$get('point.data').then((res) => {
+    getChart () {
+      this.$get('charts.data.point').then((res) => {
         let schema = [
           {name: 'date', index: 0, text: '日'},
           {name: 'AQIindex', index: 1, text: 'AQI指数'},
