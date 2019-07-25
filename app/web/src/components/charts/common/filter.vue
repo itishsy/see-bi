@@ -144,7 +144,7 @@ export default {
     init () {
       this.prevClass = this.$parent.$el._prevClass
       this.option = this.myChart.getOption()
-      this.resetOption = this._deepCopy(this.myChart.getOption())
+      // this.resetOption = this._deepCopy(this.myChart.getOption())
       this._initProList()
     },
     _initProList () {
@@ -179,7 +179,7 @@ export default {
     pro_toggle (pro, index) {
       pro.selected = !pro.selected
       this.selectAll_flag = this.isSelectAll()
-      this.redraw()
+      // this.redraw()
     },
     redraw () {
       let option = this._deepCopy(this.resetOption)
@@ -210,7 +210,7 @@ export default {
       this.pro_list.forEach((pro) => {
         pro.selected = this.selectAll_flag
       })
-      this.redraw()
+      // this.redraw()
     },
     showProPane () {
       this.pro_filter_flag = !this.pro_filter_flag
