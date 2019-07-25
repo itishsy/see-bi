@@ -46,143 +46,6 @@
       "role": "普通用户"
     }
   ],
-  "menu": [
-    {
-      "id": "admin",
-      "data": [
-        {
-          "path": "/",
-          "name": "主页",
-          "component": "Layout",
-          "icon": "none",
-          "redirect": "/home",
-          "children": [
-            {
-              "path": "/home",
-              "name": "首页",
-              "component": "Home",
-              "icon": "home",
-              "meta": {
-                "closeable": false,
-                "isShow": true
-              }
-            },
-            {
-              "path": "/dashboard",
-              "name": "管理驾驶仓",
-              "component": "Content",
-              "icon": "appstore-o",
-              "meta": {
-                "closeable": true
-              },
-              "children": [
-                {
-                  "path": "/dashboard/one",
-                  "name": "仪表盘1",
-                  "component": "dashboard/dashboard1",
-                  "icon": "user",
-                  "meta": {
-                    "closeable": true
-                  }
-                }
-              ]
-            },
-            {
-              "path": "/system",
-              "name": "系统管理",
-              "component": "Content",
-              "icon": "tool",
-              "meta": {
-                "closeable": true
-              },
-              "children": [
-                {
-                  "path": "/system/user",
-                  "name": "用户管理",
-                  "component": "system/user/User",
-                  "icon": "user",
-                  "meta": {
-                    "closeable": true
-                  }
-                },
-                {
-                  "path": "/system/menu",
-                  "name": "菜单管理",
-                  "component": "system/menu/Menu",
-                  "icon": "bars",
-                  "meta": {
-                    "closeable": true
-                  }
-                }
-              ]
-            },
-            {
-              "path": "/system/bi",
-              "name": "报表设计",
-              "component": "system/role/Role",
-              "icon": "tool",
-              "meta": {
-                "closeable": true
-              },
-              "children": [
-                {
-                  "path": "/bi/datasource",
-                  "name": "DataSource",
-                  "component": "bi/data/source",
-                  "icon": "table",
-                  "meta": {
-                    "closeable": true
-                  }
-                },
-                {
-                  "path": "/bi/dataset",
-                  "name": "DataSet",
-                  "component": "bi/data/set",
-                  "icon": "table",
-                  "meta": {
-                    "closeable": true
-                  }
-                },
-                {
-                  "path": "/bi/widget",
-                  "name": "Widget",
-                  "component": "bi/data/widget",
-                  "icon": "table",
-                  "meta": {
-                    "closeable": true
-                  }
-                },
-                {
-                  "path": "/bi/dashboard",
-                  "name": "Dashboard",
-                  "component": "bi/dashboard/Dashboard",
-                  "icon": "table",
-                  "meta": {
-                    "closeable": true
-                  }
-                }
-              ]
-            },
-            {
-              "path": "/profile",
-              "name": "个人中心",
-              "component": "personal/Profile",
-              "icon": "none",
-              "meta": {
-                "closeable": true,
-                "isShow": false
-              }
-            }
-          ]
-        },
-        {
-          "path": "*",
-          "name": "404",
-          "component": "error/404"
-        }
-      ]
-    }
-  ],
   "menu.admin": [
     {
       "path": "/",
@@ -1350,5 +1213,39 @@
     "Fri": 1290,
     "Sat": 1330,
     "Sun": 1320
+  },
+  "finance.cashBalanceByBussiness":{
+    "code":"00001",
+    "message":"成功",
+    "data":{
+      "statisticalMonth":"2019-07",
+      "itemsData":[
+        {
+          "bussinessCode":"100001",
+          "bussinessName":"非HRBPO",
+          "balance":93.4
+        },
+        {
+          "bussinessCode":"100002",
+          "bussinessName":"派遣（HRO）",
+          "balance":611
+        },
+        {
+          "bussinessCode":"100003",
+          "bussinessName":"人事代理",
+          "balance":554
+        },
+        {
+          "bussinessCode":"100004",
+          "bussinessName":"商保福利体检",
+          "balance":51
+        },
+        {
+          "bussinessCode":"100005",
+          "bussinessName":"招聘",
+          "balance":445
+        }
+      ]
+    }
   }
 }

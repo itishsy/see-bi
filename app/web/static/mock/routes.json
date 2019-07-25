@@ -1,4 +1,5 @@
 {
+  "/api/finance/:resource": "/finance.:resource",
   "/menu/:user": "/menu.:user",
   "/login\\?username=:username\\&password=:password": "/login-:username::password",
   "/user/userconfig\\?*\\&userId=:userId": "/userconfig/:userId"
