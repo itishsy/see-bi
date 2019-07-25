@@ -13,7 +13,7 @@ export default {
     theme: db.get('THEME', 'light'),
     layout: db.get('LAYOUT', 'side'),
     systemName: 'Seebon BI',
-    copyright: `${new Date().getFullYear()} <a href="http://www.seebon.com" target="_blank">Seebon</a>`,
+    copyright: `${new Date().getFullYear()} <a href="http://www.seebon.com" target="_blank">Seebon.com</a>`,
     multipage: getBooleanValue(db.get('MULTIPAGE'), true),
     fixSiderbar: getBooleanValue(db.get('FIX_SIDERBAR'), true),
     fixHeader: getBooleanValue(db.get('FIX_HEADER'), true),

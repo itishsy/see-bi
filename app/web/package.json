@@ -1,7 +1,7 @@
 {
   "name": "web",
   "version": "1.0.0",
-  "description": "seebon bi fornt by vue",
+  "description": "seebon bi front by vue",
   "author": "huangshouyi",
   "private": true,
   "scripts": {
