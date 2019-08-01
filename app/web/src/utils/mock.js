@@ -16,7 +16,7 @@ let api = axios.create({
   }
 })
 
-export const flag = true
+export const flag = false
 
 async function login (params) {
   const username = params['username']
@@ -50,7 +50,7 @@ async function login (params) {
   })
 }
 
-export function post (url, params) {
+function post (url, params) {
   if (url === 'login') {
     return login(params)
   } else {
@@ -58,7 +58,7 @@ export function post (url, params) {
   }
 }
 
-export function get (url, params) {
+function get (url, params) {
   if ((url + '').indexOf('logout/') > -1) {
     return get('index')
   }
@@ -78,7 +78,7 @@ export function get (url, params) {
   return api.get(`${url}${_params}`).then()
 }
 
-export function put (url, params) {
+function put (url, params) {
   let _params
   if (Object.is(params, undefined)) {
     _params = ''
@@ -93,4 +93,10 @@ export function put (url, params) {
   }
   return api.put(`${url}${_params}`, params)
   // return api.put(url, params)
+}
+
+export const request = {
+  post,
+  get,
+  put
 }

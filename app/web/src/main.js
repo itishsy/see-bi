@@ -10,7 +10,6 @@ import antd from 'ant-design-vue'
 import echarts from 'echarts'
 import 'ant-design-vue/dist/antd.css'
 import './utils/install'
-const mock = require('./utils/mock')
 
 Vue.config.productionTip = false
 
@@ -25,10 +24,10 @@ Vue.use({
   }
 })
 
-Vue.prototype.$post = mock.flag ? mock.post : api.post
-Vue.prototype.$get = mock.flag ? mock.get : api.get
-Vue.prototype.$put = mock.flag ? mock.put : api.put
-Vue.prototype.$delete = mock.flag ? mock.delete : api.delete
+Vue.prototype.$post = api.post
+Vue.prototype.$get = api.get
+Vue.prototype.$put = api.put
+Vue.prototype.$delete = api.delete
 Vue.prototype.$echarts = echarts
 
 /* eslint-disable no-new */

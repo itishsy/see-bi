@@ -46,6 +46,139 @@
       "role": "普通用户"
     }
   ],
+  "login-admin:123": {
+    "data": {
+      "permissions": [
+        "user:view",
+        "role:update",
+        "dept:add",
+        "jobLog:delete",
+        "job:export",
+        "role:add",
+        "weather:view",
+        "dict:add",
+        "role:export",
+        "menu:update",
+        "job:delete",
+        "menu:export",
+        "dict:view",
+        "dict:update",
+        "dept:export",
+        "job:pause",
+        "menu:view",
+        "role:view",
+        "job:update",
+        "dept:delete",
+        "user:export",
+        "role:delete",
+        "job:add",
+        "menu:delete",
+        "dept:view",
+        "article:view",
+        "user:add",
+        "user:delete",
+        "log:view",
+        "user:kickout",
+        "user:update",
+        "dict:delete",
+        "jobLog:view",
+        "dept:update",
+        "menu:add",
+        "log:delete",
+        "job:view",
+        "job:run",
+        "job:resume",
+        "redis:view",
+        "log:export",
+        "user:reset",
+        "movie:coming",
+        "movie:hot",
+        "dict:export",
+        "jobLog:export",
+        "user:online"
+      ],
+      "roles": [
+        "管理员"
+      ],
+      "exipreTime": "20190726152636",
+      "config": {
+        "userId": 1,
+        "theme": "dark",
+        "layout": "side",
+        "multiPage": "1",
+        "fixSiderbar": "1",
+        "fixHeader": "1",
+        "color": "rgb(245, 34, 45)"
+      },
+      "user": {
+        "userId": 1,
+        "username": "admin",
+        "password": "it's a secret",
+        "deptId": 1,
+        "deptName": "开发部",
+        "email": "admin@hotmail.com",
+        "mobile": "13455533233",
+        "status": "1",
+        "createTime": "2017-12-27 23:47:19",
+        "modifyTime": null,
+        "lastLoginTime": "2019-06-26 14:15:40",
+        "ssex": "2",
+        "description": "我是管理员。",
+        "avatar": "ubnKSIfAJTxIgXOKlciN.png",
+        "roleId": "1",
+        "roleName": "管理员",
+        "sortField": null,
+        "sortOrder": null,
+        "createTimeFrom": null,
+        "createTimeTo": null,
+        "id": "EuMODgorkcfnWckU4spL",
+        "authCacheKey": 1
+      },
+      "token": "b25e39b47e774b4a05b3cb1555fc377f209457c3fd339d373d3fca7b1ea8be56fdc6ed05b7ffb0700e7300d242fb83b5ca909f93b70a0e5f2e9b68f683971df4c2f2c5bb1aee06512deb3d11b9be0e80ea9cbdd85364d1f70aab635aab8c51a46cf996f856ba53c159a11ff88b61f2c371765cecdfb7c0d81297ea7b832fe6704bac87a29a7bcf35"
+    },
+    "message": "认证成功"
+  },
+  "logout-EuMODgorkcfnWckU4spL":{},
+  "login-user:123": {
+    "data": {
+      "user": {
+        "id": "VjkUauPqVcUU96d3QcJV",
+        "status": "1",
+        "userId": 1,
+        "username": "user",
+        "email": "user@hotmail.com",
+        "roleId": "1",
+        "roleName": "普通用户"
+      },
+      "config": {
+        "color": "rgb(245, 34, 45)",
+        "fixHeader": "1",
+        "fixSiderbar": "1",
+        "layout": "side",
+        "multiPage": "1",
+        "theme": "dark",
+        "userId": 1
+      },
+      "exipreTime": "20190626151540",
+      "permissions": [
+        "user:view",
+        "role:update",
+        "dept:add",
+        "jobLog:delete",
+        "job:export",
+        "role:add",
+        "weather:view",
+        "dict:add",
+        "role:export",
+        "menu:update",
+        "job:delete"
+      ],
+      "roles": [
+        "普通用户"
+      ]
+    },
+    "message": "认证成功"
+  },
   "menu.admin": [
     {
       "path": "/",

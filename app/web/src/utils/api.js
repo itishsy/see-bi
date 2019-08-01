@@ -4,10 +4,11 @@ import moment from 'moment'
 import store from '../store'
 import db from '@/utils/localstorage'
 moment.locale('zh-cn')
+const mock = require('./mock')
 
 // 统一配置
 let api = axios.create({
-  baseURL: 'http://127.0.0.1:9527/',
+  baseURL: process.env.BASE_API,
   responseType: 'json',
   validateStatus (status) {
     // 200 外的状态码都认定为失败
@@ -214,4 +215,4 @@ const request = {
   }
 }
 
-export default request
+export default mock.flag ? mock.request : request
