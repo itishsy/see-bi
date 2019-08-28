@@ -1,24 +1,10 @@
 <template>
-    <div :class="multipage === true ? 'multi-page':'single-page'">
-      <div class="page-content" :breadcrumb="breadcrumb" :title="title" :logo="logo">
-        <div :class="['page-header-wide', layout]">
-          <div class="breadcrumb">
-            <a-breadcrumb>
-              <a-breadcrumb-item :key="item.path" v-for="(item, index) in breadcrumb">
-                <span v-if="index === 0"><router-link to="/">{{item.name}}</router-link></span>
-                <span v-else>{{item.name}}</span>
-              </a-breadcrumb-item>
-            </a-breadcrumb>
-          </div>
-          <div class="detail">
-              <keep-alive v-if="multipage">
-                <router-view ref="page"/>
-              </keep-alive>
-              <router-view ref="page" v-else/>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div>
+    <keep-alive v-if="multipage">
+      <router-view ref="page"/>
+    </keep-alive>
+    <router-view ref="page" v-else/>
+  </div>
 </template>
 
 <script>

@@ -1,15 +1,15 @@
 <template>
   <a-layout>
     <drawer v-if="isMobile" :openDrawer="collapsed" @change="onDrawerChange">
-      <sider :theme="theme" :menuData="menuData" :collapsed="false" :collapsible="false" @menuSelect="onMenuSelect"/>
+      <sider :theme="theme" :menuData="menuData" collapsed="false" collapsible="false" @menuSelect="onMenuSelect"/>
     </drawer>
-    <sider :theme="theme" v-else-if="layout === 'side'" :menuData="menuData" :collapsed="collapsed" :collapsible="true" />
+    <sider :theme="theme" v-else-if="layout === 'side'" :menuData="menuData" :collapsed="collapsed" :collapsible="collapsed" />
     <drawer :open-drawer="settingBar" placement="right">
       <setting />
     </drawer>
-    <a-layout :style="{ paddingLeft: paddingLeft }">
+    <a-layout style="paddingLeft: 80px">
       <layout-header :menuData="menuData" :collapsed="collapsed" @toggleCollapse="toggleCollapse" />
-      <a-layout-content :style="{minHeight: minHeight, margin: '20px 14px 0'}" :class="fixHeader ? 'fixed-header-content' : null">
+      <a-layout-content :style="{height: minHeight}" :class="fixHeader ? 'fixed-header-content' : null">
         <contextmenu :itemList="menuItemList" :visible.sync="menuVisible" @select="onContentMenuSelect"/>
         <a-tabs class="page-tabs" @contextmenu.native="e => onContextmenu(e)" v-if="multipage" :active-key="activePage" style="margin-top: -8px; margin-bottom: 8px" :hide-add="true" type="editable-card" @change="changePage" @edit="editPage">
           <a-tab-pane :id="page.fullPath" :key="page.fullPath" v-for="page in pageList" forceRender>
@@ -21,9 +21,9 @@
         </keep-alive>
         <router-view v-else/>
       </a-layout-content>
-      <a-layout-footer style="padding: .29rem 0" class="copyright">
+      <!--<a-layout-footer style="padding: .29rem 0" class="copyright">
         <layout-footer :copyright="copyright"/>
-      </a-layout-footer>
+      </a-layout-footer>-->
     </a-layout>
   </a-layout>
 </template>
@@ -38,8 +38,6 @@ import Sider from './Sider'
 import { mapState, mapMutations } from 'vuex'
 import { triggerWindowResizeEvent } from '@/utils/common'
 
-const minHeight = window.innerHeight - 64 - 24 - 66
-
 let menuData = []
 
 export default {
@@ -47,8 +45,8 @@ export default {
   components: {LayoutHeader, LayoutFooter, Setting, Sider, Drawer, Contextmenu},
   data () {
     return {
-      minHeight: minHeight + 'px',
-      collapsed: false,
+      minHeight: this.$global.bodyHeight + 'px',
+      collapsed: true,
       menuData: menuData,
       pageList: [],
       linkList: [],
@@ -222,6 +220,16 @@ export default {
     box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
   }
   .fixed-header-content {
-    margin: 76px 12px 0 !important;
+    margin: 90px 0px 0 !important;
+  }
+  .ant-layout-content{
+    padding: 10px 20px 20px 20px;
+  }
+  .ant-layout{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    background: url(/static/img/report-bg.png);
+    background-size: 100% 100%;
   }
 </style>

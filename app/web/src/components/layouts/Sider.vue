@@ -5,12 +5,12 @@
     :collapsible="collapsible"
     v-model="collapsed"
     :trigger="null">
-    <div :class="['logo', theme]">
+   <!-- <div :class="['logo', theme]">
       <router-link to="/">
-        <!-- <img src="static/img/logo.png" alt=""> -->
+        &lt;!&ndash; <img src="static/img/logo.png" alt=""> &ndash;&gt;
         <h1 class="animated fadeIn">{{systemName}}</h1>
       </router-link>
-    </div>
+    </div>-->
     <i-menu :theme="theme" :collapsed="collapsed" :menuData="menuData" @select="onSelect"/>
   </a-layout-sider>
 </template>

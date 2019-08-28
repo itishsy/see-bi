@@ -1,8 +1,8 @@
 <template>
-  <a-layout-header :class="[fixHeader && 'ant-header-fixedHeader', layout === 'side' ? (sidebarOpened ? 'ant-header-side-opened' : 'ant-header-side-closed') : null, theme, 'header' ]">
+ <!-- <a-layout-header :class="[fixHeader && 'ant-header-fixedHeader', layout === 'side' ? (sidebarOpened ? 'ant-header-side-opened' : 'ant-header-side-closed') : null, theme, 'header' ]">
     <div :class="['header-wide', layout]">
       <router-link v-if="isMobile || layout === 'head'" to="/" :class="['logo', isMobile ? null : 'pc', theme]">
-        <!--<img width="32" src="static/img/logo.png"  alt=""/>-->
+        &lt;!&ndash;<img width="32" src="static/img/logo.png"  alt=""/>&ndash;&gt;
         <h1 v-if="!isMobile">{{systemName}}</h1>
       </router-link>
       <a-divider v-if="isMobile" type="vertical" />
@@ -14,7 +14,21 @@
           <avatar class="header-item"/>
       </div>
     </div>
-  </a-layout-header>
+     </a-layout-header>-->
+    <a-layout-header :class="[fixHeader && 'ant-header-fixedHeader', layout === 'side' ? (sidebarOpened ? 'ant-header-side-opened' : 'ant-header-side-closed') : null, theme, 'header' ]">
+  <div class="header-title">
+    <div class="bg">
+      <div class="title-bg"></div>
+      <p class="fl"><span class="text little-title">财务指标管理驾驶舱</span></p>
+      <span class="text title">test</span>
+      <div class="fr">
+        <div :class="['header-right', theme]">
+          <avatar class="header-item"/>
+        </div>
+      </div>
+    </div>
+  </div>
+    </a-layout-header>
 </template>
 
 <script>
@@ -69,13 +83,10 @@ export default {
     }
   }
   .header{
-    padding: 0 12px 0 0;
+    padding: 0;
     -webkit-box-shadow: 0 1px 4px rgba(0,21,41,.08);
     box-shadow: 0 1px 4px rgba(0,21,41,.08);
     position: relative;
-    &.light{
-      background: #fff;
-    }
     &.dark{
       background: #393e46;
     }
@@ -138,6 +149,51 @@ export default {
     &.ant-header-side-closed {
       width: 100%;
       padding-left: 80px;
+    }
+  }
+
+  .ant-layout-header{
+    background: none;
+    height: auto;
+  }
+  .header-title{
+    padding-top: 20px;
+    background-color: #1A294A;
+  }
+  .bg{
+    position: relative;
+    width: 100%;
+    height: 66px;
+    border-top: 2px solid #2E579E;
+    padding-left: 20px;
+    .title-bg{
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      margin-left: -270px;
+      width: 541px;
+      height: 85px;
+      background: url('/static/img/icons/ic-header-title.png');
+    }
+    .text{
+      background-image:-webkit-linear-gradient(right,#0a8ef7,#62ffff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      letter-spacing:5px;
+    }
+    .title{
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      -moz-transform: translateX(-50%);
+      -webkit-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+      transform: translateX(-50%);
+      font-size: 30px;
+    }
+    .little-title{
+      text-align: left;
+      font-size: 26px;
     }
   }
 </style>

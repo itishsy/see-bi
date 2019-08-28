@@ -130,10 +130,10 @@ export default {
     border-radius: 0 3px 0 0;
     background: #fafafa;
   }
-  .ant-layout-header, .system-top-menu {
+ /* .ant-layout-header, .system-top-menu {
     height: 59px !important;
     line-height: 59px !important;
-  }
+  }*/
   .ant-form-item {
     margin-bottom: 1rem !important;
   }

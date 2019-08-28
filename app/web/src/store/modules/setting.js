@@ -4,7 +4,7 @@ export default {
   namespaced: true,
   state: {
     sidebar: {
-      opened: true
+      opened: false
     },
     settingBar: {
       opened: false

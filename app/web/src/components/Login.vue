@@ -10,23 +10,19 @@
       </div>
       <div class="main-content">
         <div class="login">
-          <a-form @submit.prevent="doLogin" :autoFormCreate="(form) => this.form = form">
+          <a-form @submit.prevent="doLogin" :form="form">
             <a-tabs size="large" :tabBarStyle="{textAlign: 'center'}" style="padding: 0 2px;" :activeKey="activeKey"
                     @change="handleTabsChange">
               <a-tab-pane tab="账户密码登录" key="1">
                 <a-alert type="error" :closable="true" v-show="error" :message="error" showIcon
                          style="margin-bottom: 24px;"></a-alert>
-                <a-form-item
-                  fieldDecoratorId="name"
-                  :fieldDecoratorOptions="{rules: [{ required: true, message: '请输入账户名', whitespace: true}]}">
-                  <a-input size="large">
+                <a-form-item label="name">
+                  <a-input size="large"  v-decorator="['name',{rules: [{ required: true, message: '请输入账户名' }]}]">
                     <a-icon slot="prefix" type="user"></a-icon>
                   </a-input>
                 </a-form-item>
-                <a-form-item
-                  fieldDecoratorId="password"
-                  :fieldDecoratorOptions="{rules: [{ required: true, message: '请输入密码', whitespace: true}]}">
-                  <a-input size="large" type="password">
+                <a-form-item label="password">
+                  <a-input size="large" type="password" v-decorator="['password',{rules: [{ required: true, message: '请输入密码' }]}]">
                     <a-icon slot="prefix" type="lock"></a-icon>
                   </a-input>
                 </a-form-item>
@@ -79,7 +75,8 @@ export default {
     return {
       loading: false,
       error: '',
-      activeKey: '1'
+      activeKey: '1',
+      form: this.$form.createForm(this)
     }
   },
   computed: {

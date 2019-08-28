@@ -1,13 +1,13 @@
 <template>
   <div>
-    <a-dropdown style="display: inline-block; height: 100%; vertical-align: initial">
+    <a-dropdown style="display: inline-block; height: 60px; vertical-align: initial">
       <span style="cursor: pointer">
         <a-avatar class="avatar" size="small" shape="circle"
                   :src="avatar"/>
         <span class="curr-user">{{user.username}}</span>
       </span>
       <a-menu style="width: 150px" slot="overlay">
-        <a-menu-item @click="openProfile">
+       <!-- <a-menu-item @click="openProfile">
           <a-icon type="user"/>
           <span>个人中心</span>
         </a-menu-item>
@@ -19,7 +19,7 @@
         <a-menu-item @click="handleSettingClick">
           <a-icon type="setting"/>
           <span>系统定制</span>
-        </a-menu-item>
+        </a-menu-item>-->
         <a-menu-divider></a-menu-divider>
         <a-menu-item @click="logout">
           <a-icon type="logout"/>
@@ -98,13 +98,16 @@ export default {
     height: 30px;
   }
   .avatar {
-    margin: 20px 4px 20px 0;
+    margin-right: 5px;
     color: #1890ff;
     background: hsla(0, 0%, 100%, .85);
     vertical-align: middle;
+    margin-top: -10px;
   }
   .curr-user {
     font-weight: 600;
-    margin-left: 6px
+    margin-left: 6px;
+    float: right;
+    margin-top: -5px;
   }
 </style>

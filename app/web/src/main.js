@@ -7,9 +7,13 @@ import store from './store'
 import db from './utils/localstorage'
 import api from './utils/api'
 import antd from 'ant-design-vue'
-import echarts from 'echarts'
+/* import echarts from 'echarts' */
 import 'ant-design-vue/dist/antd.css'
+import '/static/less/Common.css'
 import './utils/install'
+import moment from 'moment'
+import global from './components/common/global/global.vue'
+import * as filters from './common/filters'
 
 Vue.config.productionTip = false
 
@@ -28,7 +32,13 @@ Vue.prototype.$post = api.post
 Vue.prototype.$get = api.get
 Vue.prototype.$put = api.put
 Vue.prototype.$delete = api.delete
-Vue.prototype.$echarts = echarts
+/* Vue.prototype.$echarts = echarts */
+Vue.prototype.$moment = moment
+Vue.prototype.$global = global
+
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
 
 /* eslint-disable no-new */
 new Vue({
