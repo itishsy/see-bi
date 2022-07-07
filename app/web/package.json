@@ -24,7 +24,7 @@
     "express": "^4.17.1",
     "jsonfile": "^5.0.0",
     "lowdb": "^1.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vuedraggable": "^2.16.0",
