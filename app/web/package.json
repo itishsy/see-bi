@@ -21,7 +21,7 @@
     "date-fns": "^1.29.0",
     "echarts": "^4.2.1",
     "enquire.js": "^2.1.6",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "jsonfile": "^5.0.0",
     "lowdb": "^1.0.0",
     "moment": "^2.24.0",
